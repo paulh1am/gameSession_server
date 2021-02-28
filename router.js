@@ -4,22 +4,29 @@ const router = express.Router()
 
 //  ==== DB init ===
 
-const dbName = "czzero";
+// const dbName = "czzero";
 
-const collectionName = "users";
+// const collectionName = "users";
 
 const db = require("./db");
 
 
-db.initialize();
+db.initialize().then(client => {
+        console.log('Connected to Database~ meowz')
+        const db = client.db('czgames')
+    });
 
-    // << db CRUD routes >>
+    // 'route issue - need middleware to allow router.use - - fix and add crud routes'
 
 
 
 
 router.get('/', (req, res) => {
     res.send('server is up and running')
+})
+
+router.post('/users', (req, res) => {
+  console.log(req.body)
 })
 
 

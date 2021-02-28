@@ -21,11 +21,6 @@ app.use(cors());
 app.use(router);
 
 
-
-
-
-
-
 //  ==== SOCKETS ===
 
 io.on('connect', (socket) => {

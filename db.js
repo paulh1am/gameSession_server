@@ -9,11 +9,8 @@ const dbName = "czgames";
 
 function initialize() {
      
-    MongoClient.connect(connectionString, { useUnifiedTopology: true })
-    .then(client => {
-        console.log('Connected to Database~ meow')
-        const db = client.db('czgames')
-    })
+   return MongoClient.connect(connectionString, { useUnifiedTopology: true })
+    
 
 }
 
