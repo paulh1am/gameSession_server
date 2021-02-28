@@ -10,6 +10,7 @@ const dbName = "czgames";
 function initialize() {
      
    return MongoClient.connect(connectionString, { useUnifiedTopology: true })
+        
     
 
 }
