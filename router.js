@@ -4,24 +4,38 @@ const router = express.Router()
 
 //  ==== DB init ===
 
-// const dbName = "czzero";
-
-// const collectionName = "users";
 
 const db = require("./db");
 
 
 db.initialize().then(client => {
-    console.log('Connected to Database~ meow3')
+    console.log('~Connected to Database~')
     const db = client.db('czGames')
-    const usersCollection = db.collection('Users');
-    // router.use(/* ... */)
-    // router.get(/* ... */)
-    // router.post(/* ... */)
-    // router.listen(/* ... */)
+    
+    const gamesCollection = db.collection('games');
 
-    router.post('/users', (req, res) => {
-    usersCollection.insertOne(req.body)
+// router.use(/* ... */)
+// router.get(/* ... */)
+
+    router.get('/', (req, res) => {
+        res.send('server is up and running')
+    })
+
+
+    router.get('/games', (req, res) => {
+        gamesCollection.find().toArray()
+        .then(results => {
+            console.log(results);
+            res.send(results);
+        })
+        .catch(error => console.error(error))
+      // ...
+    })
+
+// router.post(/* ... */)
+
+    router.post('/games', (req, res) => {
+    gamesCollection.insertOne(req.body)
     .then(result => {
       console.log(result)
     })
@@ -29,18 +43,6 @@ db.initialize().then(client => {
     })
 
 }).catch(error => console.error(error));
-
-
-
-
-
-router.get('/', (req, res) => {
-    res.send('server is up and running')
-})
-
-// router.post('/users', (req, res) => {
-//   console.log(req.body)
-// })
 
 
 
