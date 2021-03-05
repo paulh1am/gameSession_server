@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const MongoClient = require("mongodb").MongoClient;
 
-const connectionString = "mongodb+srv://cryptoZed:crypto11@czzero.gtlm6.mongodb.net/czgames?retryWrites=true&w=majority";
+const connectionString = "mongodb+srv://cryptoZed:<password>@czzero.gtlm6.mongodb.net/czgames?retryWrites=true&w=majority";
 // const client = new MongoClient(connectionString);
 const dbName = "czgames";
 
